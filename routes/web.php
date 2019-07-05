@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => 'auth.admin'], function(){
+ 
+  #CRUDアプリ
+  Route::resource('users', 'UsersController');
+ 
+  #メール送信
+  Route::get('mail', 'MailController@index');
+  Route::post('mail','MailController@confirm');
+  Route::post('mail/complete','MailController@complete');
+ 
+});
