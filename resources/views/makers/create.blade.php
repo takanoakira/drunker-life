@@ -13,16 +13,24 @@
             <input id="name" type="text" class="form-control" name="name" required autofocus>
         </div>
         <div class="form-group">
-            <label for="email">{{ __('E-Mail Address') }}</label>
-            <input id="email" type="email" class="form-control" name="email" required>
+            <label for="prefecture">{{ __('Prefecture') }}</label>
+            <input id="prefecture" type="text" class="form-control" name="prefecture" required>
         </div>
         <div class="form-group">
-            <label for="password">{{ __('Password') }}</label>
-            <input id="password" type="password" class="form-control" name="password" required>
+            <label for="address">{{ __('Address') }}</label>
+            <input id="address" type="text" class="form-control" name="address" required>
         </div>
         <div class="form-group">
-            <label for="password_confirmation">{{ __('Confirm Password') }}</label>
-            <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required>
+            <label for="phone_number">{{ __('PhoneNunber') }}</label>
+            <input id="phone_number" type="text" class="form-control" name="phone_number" required>
+        </div>
+        <div class="form-group">
+            <label for="datail">{{ __('Detail') }}</label>
+            <textarea name="datail" rows="4" cols="40">販売元の説明文を記載。</textarea>
+        </div>
+        <div class="form-group">
+            <label for="url">{{ __('Url') }}</label>
+            <input id="url" type="text" class="form-control" name="url" required>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </form>
