@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Enums\PrefectureCode;
 
 class CreateMakersTable extends Migration
 {
@@ -17,7 +18,7 @@ class CreateMakersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');
-            $table->integer('prefectures');
+            $table->enum('prefecture', PrefectureCode::getValues());
             $table->string('phone_number');
             $table->text('datail');
             $table->string('url');
