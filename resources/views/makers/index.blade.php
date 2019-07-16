@@ -15,6 +15,7 @@
                 <tr>
                     <th>ID</th>
                     <th>販売元名</th>
+                    <th>都道府県</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +23,7 @@
                     <tr>
                         <td>{{ $maker->id }}</td>
                         <td><a href="{{ url('makers/'.$maker->id) }}">{{ $maker->name }}</a></td>
+                        <td>{{ $maker->prefecture }}</td>
                     </tr>
                 @endforeach
             </tbody>
