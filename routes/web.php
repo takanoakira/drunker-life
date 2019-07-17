@@ -20,16 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 #CRUDアプリ
-Route::resource('users', 'UsersController');
+
 Route::resource('makers', 'MakersController');
-Route::get('maker/new', 'MakersController@create')->name('maker.new');
-Route::post('maker' ,'MakersController@store')->name('maker.store');
-
-Route::get('maker/{id}', 'MakersController@show')->name('maker.show');
-Route::get('maker/edit/{id}', 'MakersController@edit')->name('maker.edit');
-Route::post('maker/update/{id}', 'MakersController@update')->name('maker.update');
-Route::delete('maker/{id}' ,'MakersController@destroy')->name('maker.destroy');
-
+Route::resource('users', 'UsersController');
 
 
 #メール送信
