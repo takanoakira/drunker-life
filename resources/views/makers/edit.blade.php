@@ -8,13 +8,16 @@
     <form action="{{ url('makers/'.$maker->id) }}" method="post">
         @csrf
         @method('PUT')
-        <div class="form-group">
+         <div class="form-group">
             <label for="name">{{ __('Name') }}</label>
-            <input id="name" type="text" class="form-control" name="name" value="{{ $maker->name }}" required autofocus>
+            <input id="name" type="text" class="form-control" name="name" required autofocus>
         </div>
-                <div class="form-group">
+        <div class="form-group">
+            <form method='POST' action='/test'>
             <label for="prefecture">{{ __('Prefecture') }}</label>
-            <input id="prefecture" type="text" class="form-control" name="prefecture" required>
+            <select name='prefecture'>
+            <option value='prefecture'>{{ __('Prefecture') }}</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="address">{{ __('Address') }}</label>
