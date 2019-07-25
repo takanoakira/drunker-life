@@ -9,27 +9,25 @@
         @csrf {{-- CSRF保護 --}}
         @method('POST') {{-- 疑似フォームメソッド --}}
         <div class="form-group">
-            <label for="name">{{ __('Name') }}</label>
-            <input id="name" type="text" class="form-control" name="name" required autofocus>
+            {{Form::label('name', __('Name'))}}
+            {{Form::text('name', null,  ['class' => 'form-control', 'required', 'autofocus'])}}            
         </div>
         <div class="form-group">
             <form method='POST' action='/test'>
             <label for="prefecture">{{ __('Prefecture') }}</label>
-            <select name='prefecture'>
-            <option value='prefecture'>{{ __('Prefecture') }}</option>
-            </select>
+            {{Form::select('prefecture', \App\Enums\PrefectureCode::toSelectArray())}}            
         </div>
         <div class="form-group">
-            <label for="address">{{ __('Address') }}</label>
-            <input id="address" type="text" class="form-control" name="address" required>
+            {{Form::label('address', __('Address'))}}
+            {{Form::text('address', null, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
-            <label for="phone_number">{{ __('PhoneNunber') }}</label>
-            <input id="phone_number" type="text" class="form-control" name="phone_number" required>
+            {{Form::label('phone_number', __('PhoneNunber'))}}
+            {{Form::text('phone_number', null, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
-            <label for="datail">{{ __('Detail') }}</label>
-            <textarea name="datail" rows="4" cols="40">販売元の説明文を記載。</textarea>
+            {{Form::label('detail', __('Detail'))}}
+            {{Form::textarea('detail', null, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
             <label for="url">{{ __('Url') }}</label>

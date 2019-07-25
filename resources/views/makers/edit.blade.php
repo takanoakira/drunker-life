@@ -9,27 +9,24 @@
         @csrf
         @method('PUT')
          <div class="form-group">
-            <label for="name">{{ __('Name') }}</label>
-            <input id="name" type="text" class="form-control" name="name" required autofocus>
+            {{Form::label('name', __('Name'))}}
+            {{Form::text('name', $maker->name, ['class' => 'form-control', 'required', 'autofocus'])}}
         </div>
         <div class="form-group">
-            <form method='POST' action='/test'>
-            <label for="prefecture">{{ __('Prefecture') }}</label>
-            <select name='prefecture'>
-            <option value='prefecture'>{{ __('Prefecture') }}</option>
-            </select>
+            {{Form::label('prefecture', __('Prefecture'))}}
+            {{Form::select('prefecture', \App\Enums\PrefectureCode::toSelectArray(), $maker->prefecture)}}            
         </div>
         <div class="form-group">
-            <label for="address">{{ __('Address') }}</label>
-            <input id="address" type="text" class="form-control" name="address" required>
+            {{Form::label('address', __('Address'))}}
+            {{Form::text('address', $maker->address, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
-            <label for="phone_number">{{ __('PhoneNunber') }}</label>
-            <input id="phone_number" type="text" class="form-control" name="phone_number" required>
+            {{Form::label('phone_number', __('PhoneNunber'))}}
+            {{Form::text('phone_number', $maker->phone_number, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
-            <label for="datail">{{ __('Detail') }}</label>
-            <textarea name="datail" rows="4" cols="40">販売元の説明文を記載。</textarea>
+            {{Form::label('detail', __('Detail'))}}
+            {{Form::textarea('detail', $maker->detail, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
             <label for="url">{{ __('Url') }}</label>
