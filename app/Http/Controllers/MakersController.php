@@ -38,8 +38,11 @@ class MakersController extends Controller
     {
         $maker = new Maker;
         $maker->name = $request->name;
-        $maker->email = $request->email;
-        $maker->password = $request->password;
+        $maker->prefecture = $request->prefecture;
+        $maker->address = $request->address;
+        $maker->phone_number = $request->phone_number;
+        $maker->detail = $request->detail;
+        $maker->url = $request->url;
         $maker->save();
         return redirect('makers/'.$maker->id);
     }
