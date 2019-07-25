@@ -3,8 +3,9 @@
 namespace App\Enums;
 
 use BenSampo\Enum\Enum;
+use BenSampo\Enum\Contracts\LocalizedEnum;
 
-final class PrefectureCode extends Enum
+final class PrefectureCode extends Enum implements LocalizedEnum
 {
     const Hokkaido = '01';
     const Aomori = '02';
