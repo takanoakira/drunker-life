@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ $maker->id }}</td>
                         <td><a href="{{ url('makers/'.$maker->id) }}">{{ $maker->name }}</a></td>
-                        <td>{{ $maker->prefecture }}</td>
+                        <td>{{ $maker->prefecture->description }}</td>
                     </tr>
                 @endforeach
             </tbody>
