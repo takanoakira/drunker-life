@@ -1,12 +1,13 @@
 
 <?php
 // resources/lang/ja/enums.php
-use App\Enums\PrefectureCode
- 
+use App\Enums\PrefectureCode;
+
 return [
     PrefectureCode::class => [
         PrefectureCode::Hokkaido => '北海道',
         PrefectureCode::Aomori => '青森県',
+        PrefectureCode::Iwate => '岩手県',
         PrefectureCode::Miyagi => '宮城県',
         PrefectureCode::Akita => '秋田県',
         PrefectureCode::Yamagata => '山形県',
