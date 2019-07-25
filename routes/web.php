@@ -22,7 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 #CRUDアプリ
 
 Route::resource('makers', 'MakersController');
-Route::resource('users', 'UsersController');
+Route::resource('liquors', 'LiquorController');
+Route::resource('users', 'UserController');
 
 
 #メール送信
