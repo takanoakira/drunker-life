@@ -28,7 +28,7 @@
         <dt class="col-md-2">{{ __('販売元名') }}</dt>
         <dd class="col-md-10">{{ $maker->name }}</dd>
         <dt class="col-md-2">{{ __('都道府県') }}</dt>
-        <dd class="col-md-10">{{ $maker->pretectures }}</dd>
+        <dd class="col-md-10">{{ $maker->prefecture->description }}</dd>
         <dt class="col-md-2">{{ __('住所') }}</dt>
         <dd class="col-md-10">{{ $maker->addtess }}</dd>
         <dt class="col-md-2">{{ __('電話番号') }}</dt>
