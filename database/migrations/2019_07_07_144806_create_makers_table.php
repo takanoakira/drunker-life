@@ -20,7 +20,7 @@ class CreateMakersTable extends Migration
             $table->string('address');
             $table->enum('prefecture', PrefectureCode::getValues());
             $table->string('phone_number');
-            $table->text('datail');
+            $table->text('detail');
             $table->string('url');
             $table->timestamps();
         });
