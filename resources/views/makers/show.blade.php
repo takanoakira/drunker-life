@@ -33,6 +33,8 @@
         <dd class="col-md-10">{{ $maker->addtess }}</dd>
         <dt class="col-md-2">{{ __('電話番号') }}</dt>
         <dd class="col-md-10">{{ $maker->phone_number }}</dd>
+        <dt class="col-md-2">{{ __('販売元について説明') }}</dt>
+        <dd class="col-md-10">{{ $maker->detail }}</dd>
         <dt class="col-md-2">{{ __('URL') }}</dt>
         <dd class="col-md-10">{{ $maker->url }}</dd>
     </dl>
