@@ -25,7 +25,7 @@ class LiquorController extends Controller
      */
     public function create()
     {
-        //
+        return view('liquors.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class LiquorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $liquor = new Liquor;
+        $liquor->name =$request->name;
+        $liquor->maker_id =$request->maker_id;
+        $liquor->price=$request->price;
+        $liquor->alcohol=$request->alcohol;
+        $liquor->acidity=$request->acidity;
+        $liquor->liquor_score=$request->liquor_score;
+        $liquor->production_area=$request->production_area;
+        $liquor->raw_rice=$request->raw_rice;
+        $liquor->milling_rate=$request->milling_rate;
+        $liquor->detail=$request->detail;
+        $liquor->save();
+        return redirect('liquors/'.$liquor->id);        
     }
 
     /**
@@ -47,7 +59,7 @@ class LiquorController extends Controller
      */
     public function show(Liquor $liquor)
     {
-        //
+        return view('liquors.show',['liquor' => $liquor]);
     }
 
     /**
@@ -58,7 +70,7 @@ class LiquorController extends Controller
      */
     public function edit(Liquor $liquor)
     {
-        //
+        return view('liquors.edit', ['liquor' => $liquor]);
     }
 
     /**
@@ -70,7 +82,9 @@ class LiquorController extends Controller
      */
     public function update(Request $request, Liquor $liquor)
     {
-        //
+        $liquor->name = $request->name;
+        $liquor->save();
+        return redirect('liquors/'.$liquor->id);
     }
 
     /**
@@ -81,6 +95,7 @@ class LiquorController extends Controller
      */
     public function destroy(Liquor $liquor)
     {
-        //
+        $liquor->delete();
+        return redirect('liquors');
     }
 }
