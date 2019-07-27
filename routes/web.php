@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+#CRUDアプリ
+
+Route::resource('makers', 'MakersController');
+Route::resource('liquors', 'LiquorController');
+Route::resource('users', 'UserController');
+
+
+#メール送信
+Route::get('mail', 'MailController@index');
+Route::post('mail','MailController@confirm');
+Route::post('mail/complete','MailController@complete');
+ 
