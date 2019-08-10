@@ -5,6 +5,15 @@
 @section('content')
 <div class="container">
     <h1>{{ $title }}</h1>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form action="{{ url('liquors/'.$liquor->id) }}" method="post">
         @csrf
         @method('PUT')
@@ -14,7 +23,7 @@
         </div>
         <div class="form-group">
             {{Form::label('maker_id', __('MakerId'))}}
-            {{Form::text('maker_id',  $liquor->maker_id,  ['class' => 'form-control', 'required'])}}            
+          {{Form::select('maker_id', \App\Maker::pluck('name','id'), $liquor->maker_id)}}           
         </div>
         <div class="form-group">
             {{Form::label('price', __('Price'))}}
@@ -33,9 +42,8 @@
             {{Form::text('liquor_score',  $liquor->liquor_score,  ['class' => 'form-control', 'required'])}}            
         </div>
         <div class="form-group">
-            <form method='POST' action='/test'>
             <label for="production_area">{{ __('ProductionArea') }}</label>
-            {{Form::select('production_area', \App\Enums\PrefectureCode::toSelectArray())}}            
+            {{Form::select('production_area', \App\Enums\PrefectureCode::toSelectArray(), $liquor->production_area)}}            
         </div>
         <div class="form-group">
             {{Form::label('raw_rice', __('RawRice'))}}
@@ -50,6 +58,9 @@
             {{Form::textarea('detail', $liquor->detail, ['class' => 'form-control', 'required'])}}
         </div>
         <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <a href="{{ url('liquors/') }}" class="btn btn-secondary">
+            {{ __('index') }}
+        </a>
     </form>
 </div>
 @endsection
