@@ -34,6 +34,9 @@
             <input id="url" type="text" class="form-control" name="url" required>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        <a href="{{ url('makers/') }}" class="btn btn-secondary">
+            {{ __('index') }}
+        </a>
     </form>
 </div>
 @endsection
