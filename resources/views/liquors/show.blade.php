@@ -19,6 +19,9 @@
               @slot('table', 'liquors')
               @slot('id', $liquor->id)
          @endcomponent
+        <a href="{{ url('liquors/') }}" class="btn btn-secondary">
+            {{ __('index') }}
+        </a>
     </div>
 
     {{-- ユーザー1件の情報 --}}
@@ -27,8 +30,8 @@
         <dd class="col-md-10">{{ $liquor->id}}</dd>
         <dt class="col-md-2">{{ __('お酒名') }}</dt>
         <dd class="col-md-10">{{ $liquor->name }}</dd>
-        <dt class="col-md-2">{{ __('蔵元ID') }}</dt>
-        <dd class="col-md-10">{{ $liquor->maker_id }}</dd>
+        <dt class="col-md-2">{{ __('販売元名') }}</dt>
+        <dd class="col-md-10">{{ $liquor->maker->name }}</dd>
         <dt class="col-md-2">{{ __('価格') }}</dt>
         <dd class="col-md-10">{{ $liquor->price."円" }}</dd>
         <dt class="col-md-2">{{ __('アルコール度数') }}</dt>
