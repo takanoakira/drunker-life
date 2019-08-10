@@ -15,6 +15,7 @@
                 <tr>
                     <th>ID</th>
                     <th>お酒名</th>
+                    <th>販売元</th>
                     <th>産地</th>
                 </tr>
             </thead>
@@ -23,11 +24,17 @@
                     <tr>
                         <td>{{ $liquor->id }}</td>
                         <td><a href="{{ url('liquors/'.$liquor->id) }}">{{ $liquor->name }}</a></td>
-                        <td>{{ $liquor->production_area }}</td>
+                        <td>{{ $liquor->maker->name }}</td>
+                        <td>{{ $liquor->production_area->description }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+    </div>
+    <div>
+        <a href="{{ url('liquors/create') }}" class="btn btn-success">
+            {{ __('create') }}
+        </a>
     </div>
 </div>
 @endsection
