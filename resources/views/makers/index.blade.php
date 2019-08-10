@@ -29,6 +29,12 @@
             </tbody>
         </table>
     </div>
+    <div>
+        <a href="{{ url('makers/create') }}" class="btn btn-success">
+            {{ __('create') }}
+        </a>
+    </div>
 </div>
+
 @endsection
 
