@@ -19,6 +19,9 @@
               @slot('table', 'makers')
               @slot('id', $maker->id)
          @endcomponent
+        <a href="{{ url('makers/') }}" class="btn btn-secondary">
+            {{ __('index') }}
+        </a>
     </div>
 
     {{-- ユーザー1件の情報 --}}
@@ -39,4 +42,5 @@
         <dd class="col-md-10">{{ $maker->url }}</dd>
     </dl>
 </div>
+
 @endsection
