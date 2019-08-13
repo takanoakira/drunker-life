@@ -11,18 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 #CRUDアプリ
 
 Route::resource('makers', 'MakersController');
-Route::resource('liquors', 'LiquorController');
+Route::resource('liquors', 'LiquorsController');
 Route::resource('users', 'UserController');
 
 
