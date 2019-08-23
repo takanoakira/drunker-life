@@ -25,6 +25,10 @@
             {{Form::label('maker_id', __('MakerId'))}}
           {{Form::select('maker_id', \App\Maker::pluck('name','id'), $liquor->maker_id)}}           
         </div>
+         <div class="form-group">
+            {{Form::label('capacity', __('Capacity'))}}
+            {{Form::text('capacity', $liquor->capacity,  ['class' => 'form-control', 'required'])}}            
+        </div>
         <div class="form-group">
             {{Form::label('price', __('Price'))}}
             {{Form::text('price', $liquor->price,  ['class' => 'form-control', 'required'])}}            
@@ -35,11 +39,11 @@
         </div>
         <div class="form-group">
             {{Form::label('acidity', __('Acidity'))}}
-            {{Form::text('acidity', $liquor->acidity,  ['class' => 'form-control', 'required'])}}            
+            {{Form::text('acidity', $liquor->acidity,  ['class' => 'form-control'])}}            
         </div>
         <div class="form-group">
             {{Form::label('liquor_score', __('LiquorScore'))}}
-            {{Form::text('liquor_score',  $liquor->liquor_score,  ['class' => 'form-control', 'required'])}}            
+            {{Form::text('liquor_score',  $liquor->liquor_score,  ['class' => 'form-control'])}}            
         </div>
         <div class="form-group">
             <label for="production_area">{{ __('ProductionArea') }}</label>
@@ -47,11 +51,11 @@
         </div>
         <div class="form-group">
             {{Form::label('raw_rice', __('RawRice'))}}
-            {{Form::text('raw_rice', $liquor->raw_rice, ['class' => 'form-control', 'required'])}}
+            {{Form::text('raw_rice', $liquor->raw_rice, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('milling_rate', __('MillingRate'))}}
-            {{Form::text('milling_rate',$liquor->milling_rate, ['class' => 'form-control', 'required'])}}
+            {{Form::text('milling_rate',$liquor->milling_rate, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('detail', __('Detail'))}}
