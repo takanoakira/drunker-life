@@ -27,14 +27,19 @@ class HomeController extends Controller
          //キーワードを取得
         $keyword = $request->input('keyword');
         $production_area = $request->input('production_area');
+        $acidity = $request->input('acidity');
+        $liquors_score = $request->input('liquors_score');
+
         $query = \App\Liquor::select();
         
         if(!empty($keyword))
         {   
             //お酒名から検索
-            $query = $query->where('name', 'like', '%'.$keyword.'%')->orWhereHas('maker', function($q) use ($keyword) {
-                $q->where('name', 'like','%'.$keyword.'%');
-            });
+            $query = $query
+                ->where('name', 'like', '%'.$keyword.'%')
+                ->orWhereHas('maker', function($q) use ($keyword) {
+                    $q->where('name', 'like','%'.$keyword.'%');
+                });
         }
         
          if(!empty($production_area))
@@ -44,7 +49,13 @@ class HomeController extends Controller
             
         }
         
+        if (!empty($acidity) && !empty($liquors_score)) {
+            $query = $query->orderBy(sprintf("(POW($acidity - %s, 2) + POW(liquors_score - %s, 2))", $acidity, $liquors_score));
+        }
+        
+        $data = $query->paginate(10);
         $query = $query->get();
-        return view('home',['liquors' => $query,'keyword' => $keyword,'production_area' => $production_area]);
+        
+        return view('home',['liquors' => $query,'keyword' => $keyword,'production_area' => $production_area,'data' => $data]);
     }
 }
