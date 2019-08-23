@@ -24,12 +24,10 @@ class Liquor extends Model
         'maker_id' => 'required',
         'price' => 'required|integer|min:1|',
         'alcohol' => 'required|numeric|min:1|',
-        'acidity' => 'required|numeric|min:0|max:3|',
-        'liquor_score' => 'required|numeric|min:-30|max:30|',
+        'acidity' => 'nullable|numeric|min:0|max:3|',
+        'liquor_score' => 'nullable|numeric|min:-30|max:30|',
         'production_area' =>'required',
-        'raw_rice' => 'required',
-        'milling_rate' => 'required',
-        'detail' => 'required',
+
     );
     
      public function maker()
