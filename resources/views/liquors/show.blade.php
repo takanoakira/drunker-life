@@ -22,6 +22,9 @@
         <a href="{{ url('liquors/') }}" class="btn btn-secondary">
             {{ __('index') }}
         </a>
+        <a href="{{ url('liquors/create') }}" class="btn btn-success">
+            {{ __('create') }}
+        </a>
     </div>
 
     {{-- ユーザー1件の情報 --}}
@@ -32,6 +35,8 @@
         <dd class="col-md-10">{{ $liquor->name }}</dd>
         <dt class="col-md-2">{{ __('販売元名') }}</dt>
         <dd class="col-md-10">{{ $liquor->maker->name }}</dd>
+        <dt class="col-md-2">{{ __('容量') }}</dt>
+        <dd class="col-md-10">{{ $liquor->capacity."ml" }}</dd>
         <dt class="col-md-2">{{ __('価格') }}</dt>
         <dd class="col-md-10">{{ $liquor->price."円" }}</dd>
         <dt class="col-md-2">{{ __('アルコール度数') }}</dt>
