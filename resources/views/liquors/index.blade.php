@@ -36,6 +36,7 @@
             {{ __('create') }}
         </a>
     </div>
+    {{ $liquors->links() }}
 </div>
 @endsection
 
