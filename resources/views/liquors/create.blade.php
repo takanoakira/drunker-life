@@ -25,21 +25,25 @@
             {{Form::label('maker_id', __('MakerId'))}}
             {{Form::select('maker_id', $makers)}}           
         </div>
+         <div class="form-group">
+            {{Form::label('capacity', __('Capacity'))}}
+            {{Form::text('capacity', null,  ['class' => 'form-control', 'required'])}}            
+        </div>
         <div class="form-group">
             {{Form::label('price', __('Price'))}}
             {{Form::text('price', null,  ['class' => 'form-control', 'required'])}}            
         </div>
         <div class="form-group">
             {{Form::label('alcohol', __('Alcohol'))}}
-            {{Form::text('alcohol', null,  ['class' => 'form-control', 'required'])}}            
+            {{Form::text('alcohol', null,  ['class' => 'form-control'])}}            
         </div>
         <div class="form-group">
             {{Form::label('acidity', __('Acidity'))}}
-            {{Form::text('acidity', null,  ['class' => 'form-control', 'required'])}}            
+            {{Form::text('acidity', null,  ['class' => 'form-control'])}}            
         </div>
         <div class="form-group">
             {{Form::label('liquor_score', __('LiquorScore'))}}
-            {{Form::text('liquor_score', null,  ['class' => 'form-control', 'required'])}}            
+            {{Form::text('liquor_score', null,  ['class' => 'form-control'])}}            
         </div>
         <div class="form-group">
             <label for="production_area">{{ __('ProductionArea') }}</label>
@@ -47,11 +51,11 @@
         </div>
         <div class="form-group">
             {{Form::label('raw_rice', __('RawRice'))}}
-            {{Form::text('raw_rice', null, ['class' => 'form-control', 'required'])}}
+            {{Form::text('raw_rice', null, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('milling_rate', __('MillingRate'))}}
-            {{Form::text('milling_rate', null, ['class' => 'form-control', 'required'])}}
+            {{Form::text('milling_rate', null, ['class' => 'form-control'])}}
         </div>
         <div class="form-group">
             {{Form::label('detail', __('Detail'))}}
