@@ -29,8 +29,8 @@
             {{Form::textarea('detail', $maker->detail, ['class' => 'form-control', 'required'])}}
         </div>
         <div class="form-group">
-            <label for="url">{{ __('Url') }}</label>
-            <input id="url" type="text" class="form-control" name="url" required>
+            {{Form::label('url', __('Url'))}}
+            {{Form::text('url', $maker->url, ['class' => 'form-control', 'required'])}}
         </div>
         <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
         <a href="{{ url('makers/') }}" class="btn btn-secondary">
