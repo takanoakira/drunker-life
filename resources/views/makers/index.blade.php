@@ -9,6 +9,14 @@
 @section('content')
 <div class="container">
     <h1>{{ $title }}</h1>
+     <div class="col-md-3">   
+        <form class="form-inline" method="get">
+            <div class="form-group">
+                {{Form::select('prefecture', (array('' => '--') + \App\Enums\PrefectureCode::toSelectArray()), $prefecture)}}  
+                <input type="submit" value="検索" >
+            </div>
+        </form>
+    </div>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -34,6 +42,11 @@
             {{ __('create') }}
         </a>
     </div>
+    <div class="col-sm-8" style="text-align:right;">
+                <div class="paginate">
+                    {{ $data->appends(Request::only('prefecture'))->links() }}
+                </div>
+                </div>
 </div>
 
 @endsection
