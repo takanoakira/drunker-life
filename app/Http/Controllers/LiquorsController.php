@@ -19,7 +19,7 @@ class LiquorsController extends Controller
      */
     public function index()
     {
-        $liquors = Liquor::with('maker')->orderBy('id','desc')->get();
+        $liquors = Liquor::with('maker')->orderBy('id','desc')->paginate(10);
         return view('liquors.index', ['liquors' => $liquors]);
     }
 
@@ -45,6 +45,7 @@ class LiquorsController extends Controller
         $liquor = new Liquor;
         $liquor->name =$request->name;
         $liquor->maker_id =$request->maker_id;
+        $liquor->capacity=$request->capacity;
         $liquor->price=$request->price;
         $liquor->alcohol=$request->alcohol;
         $liquor->acidity=$request->acidity;
@@ -92,6 +93,7 @@ class LiquorsController extends Controller
         $request->validate(Liquor::$rules);
         $liquor->name =$request->name;
         $liquor->maker_id =$request->maker_id;
+        $liquor->capacity=$request->capacity;
         $liquor->price=$request->price;
         $liquor->alcohol=$request->alcohol;
         $liquor->acidity=$request->acidity;

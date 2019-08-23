@@ -34,7 +34,7 @@ class HomeController extends Controller
         
         if(!empty($keyword))
         {   
-            //お酒名から検索
+            //お酒名、販売元名から検索
             $query = $query
                 ->where('name', 'like', '%'.$keyword.'%')
                 ->orWhereHas('maker', function($q) use ($keyword) {
