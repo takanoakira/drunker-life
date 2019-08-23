@@ -16,10 +16,22 @@ class MakersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $makers = Maker::all();
-        return view('makers.index', ['makers' => $makers]);
+        
+        $prefectur = $request->input('prefecture');
+        $makers = Maker::select();
+        
+         if(!empty($prefectur))
+        {   
+            //都道府県から検索
+            $makers = $makers->where('prefecture', $prefectur);
+            
+        }
+        
+        $data = $makers->orderBy('created_at','desc')->paginate(10);
+        $makers = $makers->get();
+        return view('makers.index', ['makers' => $makers,'prefecture' => $prefectur,'data' => $data]);
     }
 
     /**
@@ -83,6 +95,11 @@ class MakersController extends Controller
     public function update(Request $request, Maker $maker)
     {
         $maker->name = $request->name;
+        $maker->prefecture = $request->prefecture;
+        $maker->address = $request->address;
+        $maker->phone_number = $request->phone_number;
+        $maker->detail = $request->detail;
+        $maker->url = $request->url;
         $maker->save();
         return redirect('makers/'.$maker->id);
     }
