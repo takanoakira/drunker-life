@@ -22,6 +22,9 @@
         <a href="{{ url('makers/') }}" class="btn btn-secondary">
             {{ __('index') }}
         </a>
+        <a href="{{ url('makers/create') }}" class="btn btn-success">
+            {{ __('create') }}
+        </a>
     </div>
 
     {{-- ユーザー1件の情報 --}}
@@ -33,13 +36,13 @@
         <dt class="col-md-2">{{ __('都道府県') }}</dt>
         <dd class="col-md-10">{{ $maker->prefecture->description }}</dd>
         <dt class="col-md-2">{{ __('住所') }}</dt>
-        <dd class="col-md-10">{{ $maker->addtess }}</dd>
+        <dd class="col-md-10">{{ $maker->address }}</dd>
         <dt class="col-md-2">{{ __('電話番号') }}</dt>
         <dd class="col-md-10">{{ $maker->phone_number }}</dd>
         <dt class="col-md-2">{{ __('販売元について説明') }}</dt>
         <dd class="col-md-10">{{ $maker->detail }}</dd>
         <dt class="col-md-2">{{ __('URL') }}</dt>
-        <dd class="col-md-10">{{ $maker->url }}</dd>
+        <dd class="col-md-10"><a href={{$maker->url}}>{{$maker->url}}</a></dd>
     </dl>
 </div>
 
