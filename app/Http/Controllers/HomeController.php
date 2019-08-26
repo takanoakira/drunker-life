@@ -28,7 +28,7 @@ class HomeController extends Controller
         $keyword = $request->input('keyword');
         $production_area = $request->input('production_area');
         $acidity = $request->input('acidity');
-        $liquors_score = $request->input('liquors_score');
+        $liquor_score = $request->input('liquor_score');
 
         $query = \App\Liquor::select();
         
@@ -49,8 +49,20 @@ class HomeController extends Controller
             
         }
         
-        if (!empty($acidity) && !empty($liquors_score)) {
-            $query = $query->orderBy(sprintf("(POW($acidity - %s, 2) + POW(liquors_score - %s, 2))", $acidity, $liquors_score));
+        if (!empty($acidity) && !empty($liquor_score)) {
+            $image_width = 531.0;
+            $image_height = 308.0;
+            $acidity_range = 3.0 - 0.0;
+            $liquor_score_range = 30.0 - (-30.0);
+            $acidity_rate = ($image_height / $image_width) * ($liquor_score_range / $acidity_range);
+
+            \Log::info("距離: ".(sqrt(pow(($acidity - 1.5) * $acidity_rate, 2) + pow($liquor_score - 0.0, 2))));
+            
+            $order_setting = sprintf("SQRT(POW((acidity - %f) * %f, 2) + POW(liquor_score - %f, 2))", $acidity, $acidity_rate, $liquor_score);
+            # \Log::info("条件: ".$order_setting);
+            $query = $query->orderByRaw($order_setting);
+        }else{
+            $query = $query->orderBy("id");
         }
         
         $data = $query->paginate(10);
