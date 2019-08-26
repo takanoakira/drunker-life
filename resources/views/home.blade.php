@@ -15,17 +15,17 @@
             </div>
             <div class="form-group">
                 {{Form::label('graph','味')}}
-                <label>酸度<input type="text" id="acidity" name="acidity" /></<label>
+                <label>酸度<input type="text" id="acidity" name="acidity" readonly="readonly" /></<label>
                
-                <label>日本酒度<input type="text" id="liquor_score" name="liquor_score" /></label>
+                <label>日本酒度<input type="text" id="liquor_score" name="liquor_score" readonly="readonly" /></label>
                 
                
-                <div id="map"><img id="click_map" src="/images/graph.png"  width="531" height="308" position="relative" />
-                <img id="pointer" src="/images/pointer.png" > 
+                <div id="map" style="cursor: pointer; overflow:hidden; position:relative; width:531px; height:308px; background-image: url('/images/graph.png')">
+                    <img id="pointer" src="/images/pointer.png" > 
                 </div>
                 <script>
                     $(function() {
-                        $("#click_map").on('click', function(e) {
+                        $("#map").on('click', function(e) {
                             var acidity_min = 0;
                             var acidity_max = 3.0;
                             var liquor_score_min = -30.0;
@@ -35,7 +35,7 @@
                             
                             $("#acidity").val(acidity);
                             $("#liquor_score").val(liquor_score);
-                            $('#pointer').css({top:(e.offsetY + 190),left:(e.offsetX + 10),
+                            $('#pointer').css({top:(e.offsetY - 9),left:(e.offsetX - 9),
                              display:'block',position:'absolute'});
                             
                             console.log('酸度=' + acidity + '度');
