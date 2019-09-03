@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-         //キーワードを取得
+        //キーワードを取得
         $keyword = $request->input('keyword');
         $production_area = $request->input('production_area');
         $acidity = $request->input('acidity');
@@ -68,6 +68,13 @@ class HomeController extends Controller
         $data = $query->paginate(10);
         $query = $query->get();
         
-        return view('home',['liquors' => $query,'keyword' => $keyword,'production_area' => $production_area,'data' => $data]);
+        return view('home',[
+            'liquors' => $query,
+            'keyword' => $keyword,
+            'production_area' => $production_area,
+            'data' => $data,
+            'acidity' => $acidity,
+            'liquor_score' => $liquor_score
+        ]);
     }
 }
