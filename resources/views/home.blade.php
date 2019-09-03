@@ -7,7 +7,8 @@
         <form class="form" method="get">
             <div class="form-group">
                 {{Form::label('keyword','キーワード')}}
-                {{Form::text('keyword', null,  ['class' => 'form-control', 'autofocus','placeholder' => "お酒名か販売元名を入力"])}}
+                {{Form::text('keyword', isset($keyword) ? $keyword : '',  ['class' => 'form-control', 'autofocus','placeholder' => "お酒名か販売元名を入力"])}}
+              
             </div>
             <div class="form-group">
                 {{Form::label('production_area','産地')}}
@@ -15,35 +16,47 @@
             </div>
             <div class="form-group">
                 {{Form::label('graph','味')}}
-                <label>酸度<input type="text" id="acidity" name="acidity" readonly="readonly" /></<label>
+                <label>酸度<input type="text" id="acidity" name="acidity" readonly="readonly" value="@if (isset($acidity)) {{$acidity}} @endif"/></<label>
                
-                <label>日本酒度<input type="text" id="liquor_score" name="liquor_score" readonly="readonly" /></label>
+                <label>日本酒度<input type="text" id="liquor_score" name="liquor_score" readonly="readonly" value="@if (isset($liquor_score)) {{$liquor_score}} @endif" /></label>
                 
                
                 <div id="map" style="cursor: pointer; overflow:hidden; position:relative; width:531px; height:308px; background-image: url('/images/graph.png')">
-                    <img id="pointer" src="/images/pointer.png" > 
+                    <img id="pointer" src="/images/pointer.png" style="display:none; position: absolute;"> 
                 </div>
                 <script>
                     $(function() {
+                        const acidity_min = 0;
+                        const acidity_max = 3.0;
+                        const liquor_score_min = -30.0;
+                        const liquor_score_max = 30.0;
+                        const image_width = 531.0;
+                        const image_height = 308.0;
+                        
+                        const acidity = {{ isset($acidity) ? $acidity : 'null' }};
+                        const liquor_score = {{ isset($liquor_score) ? $liquor_score : 'null' }};
+                        
+                        if (acidity != null && liquor_score != null) {
+                            const pos_y = image_height - ((acidity - acidity_min) / (acidity_max - acidity_min)) * image_height;
+                            const pos_x = ((liquor_score - liquor_score_min) / (liquor_score_max - liquor_score_min)) * image_width;
+                            $('#pointer').css({top: pos_y - 9, left: pos_x - 9, display: 'block'})
+                            console.log('pos_y' + pos_y);
+                            console.log('pos_x' + pos_x);
+                        }
+                        
                         $("#map").on('click', function(e) {
-                            var acidity_min = 0;
-                            var acidity_max = 3.0;
-                            var liquor_score_min = -30.0;
-                            var liquor_score_max = 30.0;
-                            var acidity = acidity_max - (acidity_max - acidity_min) * (e.offsetY / 308.0);
-                            var liquor_score = liquor_score_min + (liquor_score_max - liquor_score_min) * (e.offsetX / 531.0);
+                            var acidity = acidity_max - (acidity_max - acidity_min) * (e.offsetY / image_height);
+                            var liquor_score = liquor_score_min + (liquor_score_max - liquor_score_min) * (e.offsetX / image_width);
                             
                             $("#acidity").val(acidity);
                             $("#liquor_score").val(liquor_score);
-                            $('#pointer').css({top:(e.offsetY - 9),left:(e.offsetX - 9),
-                             display:'block',position:'absolute'});
+                            $('#pointer').css({top:(e.offsetY - 9),left:(e.offsetX - 9), display: 'block'});
                             
                             console.log('酸度=' + acidity + '度');
                             console.log('日本酒度=' + liquor_score + '度');
                         });
+                        
                     });
-                    
-                   
                 </script>
                
             </div>
