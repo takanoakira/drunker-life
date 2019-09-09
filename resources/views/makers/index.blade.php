@@ -43,10 +43,10 @@
         </a>
     </div>
     <div class="col-sm-8" style="text-align:right;">
-                <div class="paginate">
-                    {{ $data->appends(Request::only('prefecture'))->links() }}
-                </div>
-                </div>
+        <div class="paginate">
+            {{ $data->appends(Request::only('prefecture'))->links() }}
+        </div>
+    </div>
 </div>
 
 @endsection
