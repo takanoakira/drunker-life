@@ -61,6 +61,14 @@
             {{Form::label('detail', __('Detail'))}}
             {{Form::textarea('detail', null, ['class' => 'form-control', 'required'])}}
         </div>
+        <div class="form-group">
+            {{Form::label('tags', 'タグ')}}
+            <div>
+                @foreach(App\Tag::select()->orderBy('name')->get() as $tag)
+                    {{Form::checkbox("tags[]", $tag->id, false, array('id' => "tag_".$tag->id)) }}
+                    {{Form::label('tag_'.$tag->id, $tag->name)}}&nbsp;
+                @endforeach
+            </div>
         <button type="submit" name="submit" class="btn btn-primary">{{ __('Submit') }}</button>
         <a href="{{ url('liquors/') }}" class="btn btn-secondary">
             {{ __('index') }}
