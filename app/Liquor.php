@@ -30,9 +30,13 @@ class Liquor extends Model
 
     );
     
-     public function maker()
+    public function maker()
     {
         return $this->belongsTo('App\Maker');
     }
     
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag');
+    }
 }
