@@ -20,6 +20,7 @@ Auth::routes();
 
 Route::resource('makers', 'MakersController');
 Route::resource('liquors', 'LiquorsController');
+Route::resource('tags', 'TagsController');
 Route::resource('users', 'UserController');
 
 
