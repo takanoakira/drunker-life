@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Liquor;
 use App\Maker;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class LiquorsController extends Controller
@@ -55,6 +56,8 @@ class LiquorsController extends Controller
         $liquor->milling_rate=$request->milling_rate;
         $liquor->detail=$request->detail;
         $liquor->save();
+        $liquor->tags()->sync($request->tags);
+        $liquor->save();
         return redirect('liquors/'.$liquor->id);        
     }
 
@@ -102,6 +105,7 @@ class LiquorsController extends Controller
         $liquor->raw_rice=$request->raw_rice;
         $liquor->milling_rate=$request->milling_rate;
         $liquor->detail=$request->detail;
+        $liquor->tags()->sync($request->tags);
         $liquor->save();
         return redirect('liquors/'.$liquor->id);
     }
